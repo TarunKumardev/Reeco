@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../Ui/button'
+import { Button } from '../Ui/Button'
 
 function HeaderCard() {
   return (
