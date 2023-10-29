@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import Header from "./components/ui/navbar";
-import ProductTable from "./components/table";
-import HeaderCard from "./components/headercard";
-import DetailsCard from "./components/detailscard";
+import ProductTable from "./components/table/index";
+import HeaderCard from "./components/headercard/index";
+import DetailsCard from "./components/detailscard/index";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchData } from "./store/slices/foodSlice";
