@@ -1,7 +1,7 @@
 import {
   Dialog,
   DialogContent,
-} from "@/components/Ui/Dialog"
+} from "@/Components/Ui/Dialog"
 import { RootState } from "@/store";
 import { togglemodalData } from "@/store/slices/foodSlice";
 import { ReactNode } from "react"

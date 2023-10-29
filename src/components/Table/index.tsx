@@ -3,7 +3,7 @@ import { Button } from "../Ui/Button";
 import ProductTableHeader from "./TableHeader";
 import { Idata } from "@/types";
 import { ProductDialog } from "../Dialogcomp";
-import { Badge } from "@/components/Ui/Badge";
+import { Badge } from "@/Components/Ui/Badge";
 import { DialogFooter } from "../Ui/Dialog";
 import { Input } from "../Ui/Input";
 import { UseTable } from "./Table.hooks";
