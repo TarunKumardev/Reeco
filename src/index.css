@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.product__list__container::-webkit-scrollbar{
+    width: 10px;
+}
+.product__list__container::-webkit-scrollbar-thumb{
+    background: rgb(212, 211, 211);
+    border-radius: 20px;
+}
+.product__list__container::-webkit-scrollbar-track{
+    background: transparent;
+}
