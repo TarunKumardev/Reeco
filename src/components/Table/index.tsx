@@ -2,12 +2,12 @@ import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import { Button } from "../ui/button";
 import ProductTableHeader from "./TableHeader";
 import { Idata } from "@/types";
-import { ProductDialog } from "../Dialogcomp";
+import { ProductDialog } from "../dialogcomp";
 import { Badge } from "@/components/ui/badge";
 import { DialogFooter } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { UseTable } from "./Table.hooks";
-const imageURL = "https://lh3.google.com/u/0/d/17wMahGnqw9yQx4NBi9BEFHjlqRUmv4ZV=w1920-h932-iv1";
+const imageURL = "https://imgdb.net/storage/uploads/8d5b47b73cfe6b8eda47830b0294ff94f972a12173cd1f94eb2e0b3766071659.jpg";
 
 
 export default function ProductTable() {

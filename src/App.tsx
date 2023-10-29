@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import Header from "./components/ui/navbar";
-import ProductTable from "./components/Table";
+import ProductTable from "./components/table";
 import HeaderCard from "./components/headercard";
 import DetailsCard from "./components/detailscard";
 import { useEffect } from "react";
@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { fetchData } from "./store/slices/foodSlice";
 
 function App() {
-   const dispatch = useDispatch()
+   const dispatch = useDispatch()   
    useEffect(() => {
   //@ts-ignore
   dispatch(fetchData())
