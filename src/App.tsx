@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import Header from "./components/Ui/navbar";
+import Header from "./components/Ui/Navbar";
 import ProductTable from "./components/Table/index";
 import HeaderCard from "./components/Headercard/index";
 import DetailsCard from "./components/Detailscard/index";

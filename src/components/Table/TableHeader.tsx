@@ -1,4 +1,4 @@
-import { TableHead, TableHeader, TableRow } from '../Ui/table'
+import { TableHead, TableHeader, TableRow } from '../Ui/Table'
 
 function ProductTableHeader() {
   return (

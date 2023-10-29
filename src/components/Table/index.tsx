@@ -1,11 +1,11 @@
-import { Table, TableBody, TableCell, TableRow } from "../Ui/table";
-import { Button } from "../Ui/button";
+import { Table, TableBody, TableCell, TableRow } from "../Ui/Table";
+import { Button } from "../Ui/Button";
 import ProductTableHeader from "./TableHeader";
 import { Idata } from "@/types";
 import { ProductDialog } from "../Dialogcomp";
-import { Badge } from "@/components/Ui/badge";
-import { DialogFooter } from "../Ui/dialog";
-import { Input } from "../Ui/input";
+import { Badge } from "@/components/Ui/Badge";
+import { DialogFooter } from "../Ui/Dialog";
+import { Input } from "../Ui/Input";
 import { UseTable } from "./Table.hooks";
 const imageURL = "https://imgdb.net/storage/uploads/8d5b47b73cfe6b8eda47830b0294ff94f972a12173cd1f94eb2e0b3766071659.jpg";
 
