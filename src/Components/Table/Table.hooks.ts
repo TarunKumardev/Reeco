@@ -1,5 +1,5 @@
 import { RootState } from "@/store"
-import { togglemodalData, updateproductData } from "@/store/slices/foodSlice"
+import { togglemodalData, updateproductData , toggleEditmodal } from "@/store/slices/foodSlice"
 import { useDispatch, useSelector } from "react-redux"
 
 export function UseTable(){
@@ -13,6 +13,10 @@ export function UseTable(){
       function openProductDialog(productname: string) {    
         dispatch(togglemodalData(productname))
       }
+
+      function openEditmodal(productname: string){
+        dispatch(toggleEditmodal(productname)) 
+      }
       
       function handleProduct(varianttype: string) {
         dispatch(updateproductData({  type : varianttype  }))
@@ -23,6 +27,7 @@ export function UseTable(){
         state ,
         updateProductBadge,
         openProductDialog,
-        handleProduct
+        handleProduct,
+        openEditmodal
       }
 }

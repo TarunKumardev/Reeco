@@ -4,29 +4,24 @@ import ProductTableHeader from "./TableHeader";
 import { Idata } from "@/types";
 import { ProductDialog } from "../Dialogcomp";
 import { Badge } from "@/Components/Ui/Badge";
-import { DialogFooter } from "../Ui/Dialog";
 import { Input } from "../Ui/Input";
 import { UseTable } from "./Table.hooks";
+import UrgentComp from "../Urgentcomp";
+import Edititemcomp from "../Additemcomp";
 const imageURL = "https://imgdb.net/storage/uploads/8d5b47b73cfe6b8eda47830b0294ff94f972a12173cd1f94eb2e0b3766071659.jpg";
 
 
 export default function ProductTable() {
-   const {state , updateProductBadge, openProductDialog,     handleProduct}   = UseTable()
- 
-  
+   const {state , updateProductBadge, openProductDialog, openEditmodal }   = UseTable()
+   const modals = {
+    "edit" : <Edititemcomp/>,
+    "status" : <UrgentComp/>
+   }
+   
   return (
     <>
-      <ProductDialog>
-        <h1>Missing Product</h1>
-        <h2>Is '{state.modalstate.productname}' urgent</h2>
-        <DialogFooter>
-          <Button type="submit" onClick={() => handleProduct("not urgent")}>
-            No
-          </Button>
-          <Button type="submit" onClick={() => handleProduct("urgent")}>
-            Yes
-          </Button>
-        </DialogFooter>
+      <ProductDialog> 
+   {modals?.[state?.modalstate?.type]}
       </ProductDialog>
 
       <div className="h-auto">
@@ -71,6 +66,7 @@ export default function ProductTable() {
                 key={value.productname}
                 updateBadge={updateProductBadge}
                 openDialog={openProductDialog}
+                openEdit = {openEditmodal}
                 {...value}
               />
             ))}
@@ -89,10 +85,12 @@ function ProductTableRow({
   badge,
   updateBadge,
   openDialog,
+  openEdit
 }: Idata & {
   badge :string
   updateBadge: (name : string , type : string) => void;
   openDialog: (data : string) => void;
+  openEdit : (data : string) => void;
 }) {
   const VariantBadge = () => (
     <Badge variant={badge === "Approved" ? "outline" : "destructive"}>
@@ -113,7 +111,7 @@ function ProductTableRow({
       <TableCell>{productname}</TableCell>
       <TableCell>{brand}</TableCell>
       <TableCell>{quantity}</TableCell>
-      <TableCell>{price}</TableCell>
+      <TableCell>{quantity * price}</TableCell>
       <TableCell className="">{badge ? <VariantBadge /> : null} </TableCell>
       <TableCell className="">
         <div className="flex items-center justify-between">
@@ -122,6 +120,7 @@ function ProductTableRow({
               Yes
             </Button>
             <Button onClick={() => openDialog(productname)}>Remove</Button>
+            <Button onClick={() => openEdit(productname)}>Edit</Button>
           </div>
         </div>
       </TableCell>

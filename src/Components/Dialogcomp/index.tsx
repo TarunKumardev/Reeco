@@ -12,11 +12,13 @@ export function ProductDialog({ children  } : {children : ReactNode } ) {
   const fakedata = useSelector((data : RootState ) => data.productList.modalstate )
   const dispatch = useDispatch()  
   return (
-    <Dialog open = {fakedata.isTriggered} 
+    <Dialog   open = {fakedata.isTriggered} 
     onOpenChange = {() => {
       dispatch(togglemodalData(""))
-    }}>
-      <DialogContent className="sm:max-w-[425px]">
+    }}
+ 
+    >
+      <DialogContent className="sm:max-w-[525px]">
           {children}
 
       </DialogContent>
