@@ -11,8 +11,9 @@ export interface Idata {
     value: Idata[],
     modalstate : {
       isTriggered: boolean,
-      data: Idata | object,
+      data: Idata ,
       productname : string
+      type : string
     }
     fetcheddata : {
       data : []

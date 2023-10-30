@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CounterState, Idata } from '@/types';
+import { store } from '../index';
 
 const initialState: CounterState = {
   value: [],
@@ -7,12 +8,14 @@ const initialState: CounterState = {
     isTriggered: false,
     data: {} as Idata,
     productname: '',
+    type : ""
   },
   fetcheddata : {
     data: [],
     loading: 'idle',
     error: undefined,
-  }
+  } 
+
 };
 export const fetchData = createAsyncThunk('data/fetchData', async () => {
   const response = await fetch('https://api.jsonbin.io/v3/b/653e7d8d0574da7622bf4bbc', {
@@ -34,7 +37,8 @@ const counterSlice = createSlice({
   reducers: {
     updateproductData: (state, { payload }) => {
       const productName = state.modalstate.productname || payload.productname;
-
+   console.log(state.value);
+   
       state.value = state.value.map((item) =>
         item.productname === productName
           ? { ...item, badge: payload.type }
@@ -49,10 +53,39 @@ const counterSlice = createSlice({
       state.modalstate = {
         ...state.modalstate,
         isTriggered: !state.modalstate.isTriggered,
-        data: updatedData || {},
+        data: updatedData!,
+        productname: payload,
+        type : "status"
+      };
+    },
+    toggleEditmodal : (state, { payload }) => {
+      const filterData = state.value.find(
+        (item) => item.productname === payload
+      );
+      state.modalstate = {
+        ...state.modalstate,
+        isTriggered: !state.modalstate.isTriggered,
+        data: filterData!,
+        type : "edit",
         productname: payload,
       };
     },
+     EditProduct : (state, { payload }) => {
+      state.value = state.value.map((product) => {
+        if (product.productname === state.modalstate.productname) {
+          return { ...product, quantity: payload };
+        }
+        return product; // Return unchanged objects
+      });
+
+      state.modalstate = {
+        ...state.modalstate,
+        isTriggered: !state.modalstate.isTriggered,
+        data: {},
+        type : "edit",
+        productname: payload,
+      };
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -70,6 +103,6 @@ const counterSlice = createSlice({
   },
 });
 
-export const { updateproductData, togglemodalData } = counterSlice.actions;
+export const { updateproductData, togglemodalData , toggleEditmodal  , EditProduct} = counterSlice.actions;
 
 export default counterSlice.reducer;
